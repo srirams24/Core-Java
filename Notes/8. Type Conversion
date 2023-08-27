@@ -1,0 +1,118 @@
+# 8. **Type Conversion and Casting in Java**
+
+## **Introduction to Variables and Types:**
+
+- In the previous guide, we covered how to work with variables in Java.
+- Every variable has a name and a data type associated with it.
+- For numbers, we have data types like `int`, `float`, `double`, and `long`.
+- For characters, we use `char`, for Boolean values, we use `boolean`, and for text, we have `String`.(We will see later)
+
+## **Changing Variable Types:**
+
+- Once a variable is declared with a specific data type, you cannot change its type directly.
+- However, you can assign values of one type to another type.
+
+## **Implicit Conversion (Type Promotion):**
+
+- Some type conversions happen automatically, which is called implicit conversion.
+- For instance, if you have a byte variable `a` and an int variable `b`, you can assign `a` to `b` without any explicit casting.
+- This is because the `int` data type can accommodate the range of `byte`.
+    
+    ```java
+    class Hello 
+    {
+        public static void main(String args[])
+        {
+           byte a = 10; //byte a
+           int b = a; //  Implicit conversion (promotion) from byte to int
+           System.out.println(b); //printing b
+        }
+    }
+    ```
+    
+
+## **Explicit Conversion (Casting):**
+
+- When you want to convert a value from one data type to another that doesn't fit directly, you need to use explicit casting.
+- This is achieved by specifying the target type in parentheses before the value you want to convert.
+    
+    ```java
+    class Hello 
+    {
+        public static void main(String args[])
+        {
+           int a = 10; //byte a
+           byte b = (byte) a; // Explicit casting from int 
+           System.out.println(b); //printing b
+        }
+    }
+    ```
+    
+
+## **Type Conversion and Loss of Precision:**
+
+- Be cautious when converting between types that have different ranges.
+- For example, converting from `float` to `int` may result in losing the decimal part of the `float` value.
+    
+    ```java
+    class Hello 
+    {
+        public static void main(String args[])
+        {
+            float floatValue = 5.6f;
+            int intValue = (int) floatValue; // Explicit casting from float to int (loses decimal)
+            System.out.println(intValue); //printing intValue
+        }
+    }
+    
+    ```
+    
+
+**Modulus Operation for Conversions:**
+
+- When converting a value that is out of range for the target data type, the modulus operation is used.
+- For instance, if you convert a large `int` value to a `byte`, the value is wrapped around within the range of `byte`.
+    
+    ```java
+    class Hello 
+    {
+        public static void main(String args[])
+        {
+            int largeInt = 257;
+            byte smallByte = (byte) largeInt; // The result will be 1 due to modulo operation i.e 257 % 256(byte range) =  1
+            System.out.println(smallByte);    //Printing smallByte
+        }
+    }
+    
+    ```
+    
+
+## **Type Promotion in Expressions:**
+
+- When performing operations involving variables of different types, Java may promote one or more values to a larger data type to avoid data loss.
+
+```java
+byte a = 10;
+byte b = 20;
+int result = a * b; // byte values are promoted to int before multiplication
+
+```
+
+## **Shortcuts for Compilation and Execution:**
+
+- In recent versions of Java, you can compile and run a single Java file using a single command. i.e: `java <main class Name>`
+- However, this shortcut might not work in older versions.
+
+```
+java Hello
+
+```
+
+<aside>
+💡 Remember that this shortcut is for learning purposes and isn't typically used in professional projects.
+
+</aside>
+
+## Conclusion:
+
+- By understanding type conversion, casting, and type promotion, you'll be better equipped to manage data types and handle conversions between them in your Java programs.
